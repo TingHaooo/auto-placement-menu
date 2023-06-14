@@ -1,3 +1,5 @@
+import React from "react";
+import { useState } from "react";
 import { Box, MenuList, Text } from "@tonic-ui/react";
 import {
   Flex,
@@ -8,8 +10,9 @@ import {
   useColorMode,
   useColorStyle,
 } from "@tonic-ui/react";
-import React from "react";
 import ReactFocusLock from "react-focus-lock";
+import useCalcMenuPlacement from "./useCalcMenuPlacement";
+import useCalcMenuMaxHeight from "./useCalcMenuMaxHeight";
 
 const Avatar = (props) => (
   <Flex
@@ -25,18 +28,24 @@ const Avatar = (props) => (
 
 let shouldPreventDefaultOnNextBlur = false;
 
-const AutoPlacementMenu = () => {
+const AutoPlacementMenu = (props) => {
+  const { items } = props;
+
   const [colorMode] = useColorMode();
   const [colorStyle] = useColorStyle({ colorMode });
-  const [menuState, setMenuState] = React.useState("main");
+  const [menuState, setMenuState] = useState("main");
+
+  const { placement, calcMenuPlacementRefCallback } = useCalcMenuPlacement();
+  const { maxHeight, calcMenuMaxHeightRefCallback } = useCalcMenuMaxHeight();
 
   return (
     <Menu
       onOpen={() => {
         setMenuState("main");
       }}
+      placement={placement}
     >
-      <MenuToggle>
+      <MenuToggle ref={calcMenuPlacementRefCallback}>
         <Avatar
           backgroundColor={colorStyle.background.secondary}
           color={colorStyle.color.secondary}
@@ -49,6 +58,8 @@ const AutoPlacementMenu = () => {
       </MenuToggle>
       <ReactFocusLock persistentFocus={true}>
         <MenuList
+          ref={calcMenuMaxHeightRefCallback}
+          style={{ maxHeight: `${maxHeight}px`, overflow: "scroll" }}
           width="max-content"
           onBlur={(event) => {
             if (shouldPreventDefaultOnNextBlur) {
@@ -60,30 +71,14 @@ const AutoPlacementMenu = () => {
           }}
         >
           <Box display={menuState === "main" ? "block" : "none"}>
-            <MenuItem>
-              <Flex flex="none" mr="3x">
-                <Icon icon="settings" />
-              </Flex>
-              <Flex flex="auto">
-                <Text>Settings</Text>
-              </Flex>
-            </MenuItem>
-            <MenuItem>
-              <Flex flex="none" mr="3x">
-                <Icon icon="user-team" />
-              </Flex>
-              <Flex flex="auto">
-                <Text>Accounts</Text>
-              </Flex>
-            </MenuItem>
-            <MenuItem>
-              <Flex flex="none" mr="3x">
-                <Icon icon="lock" />
-              </Flex>
-              <Flex flex="auto">
-                <Text>Privacy control</Text>
-              </Flex>
-            </MenuItem>
+            {items.map((item) => {
+              const { name } = item;
+              return (
+                <MenuItem key={name}>
+                  <Text>{name}</Text>
+                </MenuItem>
+              );
+            })}
           </Box>
         </MenuList>
       </ReactFocusLock>

@@ -1,3 +1,3 @@
-import AutoPlacementMenu from "./AutoPlacementMenu";
+import AutoPlacementMenu from "./AutoPlacementMenu/index";
 
 export { AutoPlacementMenu };

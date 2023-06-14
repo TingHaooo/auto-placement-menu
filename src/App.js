@@ -1,6 +1,8 @@
 import { AutoPlacementMenu } from "./components";
 import { TonicProvider } from "@tonic-ui/react";
 
+const items = [{ name: "Settings" }, { name: "Accounts" }, { name: "Privacy" }];
+
 function App() {
   return (
     <TonicProvider
@@ -17,9 +19,7 @@ function App() {
           alignItems: "center",
         }}
       >
-        <div>
-          <AutoPlacementMenu />
-        </div>
+        <AutoPlacementMenu items={items} />
       </div>
     </TonicProvider>
   );
