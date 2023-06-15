@@ -1,70 +1,82 @@
-# Getting Started with Create React App
+# Auto Placement Menu
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Auto Placement Menu is a React component for creating a dynamic and responsive menu that automatically adjusts its position based on the available space. This repository contains the implementation of the Auto Placement Menu component, along with integration and end-to-end tests.
 
-## Available Scripts
+## Installation
 
-In the project directory, you can run:
+To use the Auto Placement Menu component in your React project, follow these steps:
 
-### `npm start`
+1. Clone the repository:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+   ```shell
+   git clone https://github.com/TingHaooo/auto-placement-menu.git
+   ```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+2. Navigate to the project directory:
 
-### `npm test`
+   ```shell
+   cd auto-placement-menu
+   ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+3. Install the dependencies:
 
-### `npm run build`
+   ```shell
+   npm install
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Demo
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+To see the demo Auto Placement Menu component in local:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```shell
+npm start
+```
 
-### `npm run eject`
+## Usage
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+To use the Auto Placement Menu component in your React application, you need to import it from the `/components` folder:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```jsx
+import AutoPlacementMenu from "./components/AutoPlacementMenu";
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+function App() {
+  return (
+    <div>
+      {/* Your other components */}
+      <AutoPlacementMenu />
+    </div>
+  );
+}
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+You can customize the appearance and behavior of the menu by passing props to the `AutoPlacementMenu` component.
 
-## Learn More
+## Testing
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+This project includes both integration tests and end-to-end (e2e) tests.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Integration Testing
 
-### Code Splitting
+Integration tests are located in the `/components` folder. To run the integration tests, use the following command:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```shell
+npm run rtl-test
+```
 
-### Analyzing the Bundle Size
+This command will execute the integration tests using the React Testing Library.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### End-to-End (e2e) Testing
 
-### Making a Progressive Web App
+End-to-end tests are located in the `/tests` folder. To run the e2e tests, use the following command:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```shell
+npm run e2e-test
+```
 
-### Advanced Configuration
+This command will execute the e2e tests using Playwright.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Important Folders
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- `/components`: Contains the Auto Placement Menu component and integration tests.
+- `/testUtils`: Includes utilities for React Testing Library and Playwright.
+- `/tests`: Contains the end-to-end (e2e) tests.
