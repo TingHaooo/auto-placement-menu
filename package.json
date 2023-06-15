@@ -24,7 +24,10 @@
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
+    ],
+    "rules": {
+      "testing-library/prefer-screen-queries": "off"
+    }
   },
   "browserslist": {
     "production": [
@@ -37,5 +40,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.35.0"
   }
 }
