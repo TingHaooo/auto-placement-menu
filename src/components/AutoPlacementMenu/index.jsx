@@ -45,7 +45,10 @@ const AutoPlacementMenu = (props) => {
       }}
       placement={placement}
     >
-      <MenuToggle ref={calcMenuPlacementRefCallback}>
+      <MenuToggle
+        ref={calcMenuPlacementRefCallback}
+        data-testid="auto-placement-menu-toggle-button"
+      >
         <Avatar
           backgroundColor={colorStyle.background.secondary}
           color={colorStyle.color.secondary}
@@ -58,6 +61,7 @@ const AutoPlacementMenu = (props) => {
       </MenuToggle>
       <ReactFocusLock persistentFocus={true}>
         <MenuList
+          data-testid="auto-placement-menu-list"
           ref={calcMenuMaxHeightRefCallback}
           style={{ maxHeight: `${maxHeight}px`, overflow: "scroll" }}
           width="max-content"
